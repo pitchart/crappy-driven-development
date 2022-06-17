@@ -1,11 +1,19 @@
 ﻿using System;
+using TheatricalPlayersRefactoringKata.Interfaces;
 
 namespace TheatricalPlayersRefactoringKata
 {
-    internal static class CreditsCalculator
+    public static partial class CreditsCalculator
     {
+        private static readonly IMaxNormalizer _maxNormalizer = new MaxNormalizer();
+
+        private static readonly IComedyService _comedyService = new ComedyService();
+
+        private static readonly IFloorNormalizer _floorNormalizer = new FloorNormalizer();
+
         public static int CalculateCreditsFor(PlayType performanceType, int audience)
-            => Math.Max(audience - 30, 0) +
-               (performanceType == PlayType.Comedy ? (int) Math.Floor((decimal) audience / 5) : 0);
+        {
+            return CalculateCreditsForInternal(performanceType, audience);
+        }
     }
 }
