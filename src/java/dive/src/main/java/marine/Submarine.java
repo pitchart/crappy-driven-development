@@ -19,12 +19,26 @@ public class Submarine {
     }
 
     private void move(Instruction instruction) {
-      if (instruction.getText().equals("down")) {
-        position = position.withD(position.getD() + instruction.getX());
-      } else if (instruction.getText().equals("up")) {
-        position = position.withD(position.getD() - instruction.getX());
+      if (!instruction.getText().equals("down")) {
+        if (instruction.getText().equals("up")) {
+          position = position.withD(subAnInt(instruction));
+        } else {
+          position = position.withH(addToH(instruction));
+        }
       } else {
-        position = position.withH(position.getH() + instruction.getX());
+        position = position.withD(addAnInt(instruction));
       }
     }
+
+  private int addToH(Instruction instruction) {
+    return position.getH() + instruction.getX();
+  }
+
+  private int subAnInt(Instruction instruction) {
+    return position.getD() - instruction.getX();
+  }
+
+  private int addAnInt(Instruction instruction) {
+    return position.getD() + instruction.getX();
+  }
 }
