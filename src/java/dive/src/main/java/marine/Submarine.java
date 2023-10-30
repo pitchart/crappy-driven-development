@@ -8,8 +8,8 @@ import java.util.List;
 public class Submarine {
     private Position position;
 
-    public Submarine(int horizontal, int depth) {
-        this.position = new Position(horizontal, depth);
+    public Submarine(int h, int d) {
+        this.position = new Position(h, d);
     }
 
     public void move(List<Instruction> instructions) {
@@ -20,11 +20,11 @@ public class Submarine {
 
     private void move(Instruction instruction) {
       if (instruction.getText().equals("down")) {
-        position = position.withDepth(position.getDepth() + instruction.getX());
+        position = position.withD(position.getD() + instruction.getX());
       } else if (instruction.getText().equals("up")) {
-        position = position.withDepth(position.getDepth() - instruction.getX());
+        position = position.withD(position.getD() - instruction.getX());
       } else {
-        position = position.withHorizontal(position.getHorizontal() + instruction.getX());
+        position = position.withH(position.getH() + instruction.getX());
       }
     }
 }

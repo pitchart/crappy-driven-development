@@ -8,6 +8,9 @@ import lombok.With;
 @With
 @Getter
 public class Position {
-    private final int horizontal;
-    private final int depth;
+    // horizontal position
+    private final int h;
+
+    // depth position
+    private final int d;
 }
