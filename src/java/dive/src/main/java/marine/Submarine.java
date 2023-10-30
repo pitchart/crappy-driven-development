@@ -17,10 +17,12 @@ public class Submarine {
     }
 
     private void move(Instruction instruction) {
-        position = switch (instruction.getText()) {
-            case "down" -> position.withDepth(position.getDepth() + instruction.getX());
-            case "up" -> position.withDepth(position.getDepth() - instruction.getX());
-            default -> position.withHorizontal(position.getHorizontal() + instruction.getX());
-        };
+      if (instruction.getText().equals("down")) {
+        position = position.withDepth(position.getDepth() + instruction.getX());
+      } else if (instruction.getText().equals("up")) {
+        position = position.withDepth(position.getDepth() - instruction.getX());
+      } else {
+        position = position.withHorizontal(position.getHorizontal() + instruction.getX());
+      }
     }
 }
