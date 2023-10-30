@@ -13,7 +13,9 @@ public class Submarine {
     }
 
     public void move(List<Instruction> instructions) {
-        instructions.forEach(this::move);
+      for (int i = 0; i < instructions.size(); i++) {
+        move(instructions.get(i));
+      }
     }
 
     private void move(Instruction instruction) {
