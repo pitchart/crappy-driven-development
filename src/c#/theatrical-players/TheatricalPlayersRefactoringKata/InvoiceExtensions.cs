@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using static TheatricalPlayersRefactoringKata.TextFormatter;
-using static TheatricalPlayersRefactoringKata.PricingCalculator;
-using static TheatricalPlayersRefactoringKata.CreditsCalculator;
 
 namespace TheatricalPlayersRefactoringKata;
 
@@ -29,7 +27,7 @@ public static class InvoiceExtensions
         Func<string, int, int, string> lineFormatter)
     {
         var amount = plays[performance.PlayId].PriceFor(performance.Audience);
-        var credits = CalculateCreditsFor(plays[performance.PlayId].Type, performance.Audience);
+        var credits = plays[performance.PlayId].CreditsFor(performance.Audience);
 
         return new Statement(
             lineFormatter(plays[performance.PlayId].Name, amount, performance.Audience),
