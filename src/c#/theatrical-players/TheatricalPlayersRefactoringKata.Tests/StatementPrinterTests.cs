@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using VerifyXunit;
 using Xunit;
-using static TheatricalPlayersRefactoringKata.PlayType;
 using static VerifyXunit.Verifier;
 
 namespace TheatricalPlayersRefactoringKata.Tests
@@ -15,9 +14,9 @@ namespace TheatricalPlayersRefactoringKata.Tests
         {
             var plays = new Dictionary<string, Play>
             {
-                {"hamlet", new Play("Hamlet", Tragedy)},
-                {"as-like", new Play("As You Like It", Comedy)},
-                {"othello", new Play("Othello", Tragedy)}
+                {"hamlet", new Tragedy("Hamlet")},
+                {"as-like", new Comedy("As You Like It")},
+                {"othello", new Tragedy("Othello")}
             };
 
             var invoice = new Invoice("BigCo", new List<Performance>

@@ -28,12 +28,8 @@ public static class InvoiceExtensions
         Performance performance,
         Func<string, int, int, string> lineFormatter)
     {
-        var performanceType = plays[performance.PlayId].Type;
-        var amount =
-            CalculatePriceFor(performanceType, performance.Audience)
-                .Match(price => price, _ => throw new Exception("unknown type: " + performanceType));
-
-        var credits = CalculateCreditsFor(performanceType, performance.Audience);
+        var amount = plays[performance.PlayId].PriceFor(performance.Audience);
+        var credits = CalculateCreditsFor(plays[performance.PlayId].Type, performance.Audience);
 
         return new Statement(
             lineFormatter(plays[performance.PlayId].Name, amount, performance.Audience),
