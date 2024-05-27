@@ -29,6 +29,7 @@ public static class InvoiceExtensions
         var amount = plays[performance.PlayId].PriceFor(performance.Audience);
         var credits = plays[performance.PlayId].CreditsFor(performance.Audience);
 
+        //@todo refactor this
         return new Statement(
             lineFormatter(plays[performance.PlayId].Name, amount, performance.Audience),
             amount,
